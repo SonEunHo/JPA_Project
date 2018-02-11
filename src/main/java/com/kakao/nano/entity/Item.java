@@ -2,16 +2,15 @@ package com.kakao.nano.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
+public class Item extends BaseEntity{
     @Id
     @GeneratedValue
     private Long id;
